@@ -24,7 +24,7 @@
   - [Data Utilities](#data-utilities)
     - [Datasets](#datasets)
     - [Dataloader \& DataSamplers](#dataloader--datasamplers)
-    - [Additional Info](#additional-info)
+  - [Additional Info](#additional-info)
 
 ## Imports
 
@@ -346,7 +346,7 @@ See:
 
 - [dataloader](https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader)
 
-### Additional Info
+## Additional Info
 
 - [Deep Learning with PyTorch: A 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
 - [PyTorch Forums](https://discuss.pytorch.org/)

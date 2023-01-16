@@ -193,18 +193,21 @@ x = x.to('cpu')                                             # move x's data from
                                                             # GPU to CPU and return
                                                             # new object
 
-if not torch.backends.mps.is_available():                   # device agnostic code 
-    if not torch.backends.mps.is_built():                   # and modularity
-        print("MPS not available because the "
-              "current PyTorch install was not "
-              "built with MPS enabled.")
-    else:
-        print("MPS not available because the "
-              "current MacOS version is not 12.3+ "
-              "and/or you do not have an MPS-enabled "
-              "device on this machine.")
+if not torch.backends.mps.is_available():
+  if not torch.backends.mps.is_built():
+      if not torch.cuda.is_available():     
+          device = torch.device('cpu')
+          print("==>> device: ", device)                      
+      else:              
+          print(torch.cuda.is_available())                                        
+          device = torch.device('cuda')                       
+          print("==>> device: ", device)
 else:
-    mps_device = torch.device("mps")
+  print(torch.backends.mps.is_available())
+  print(torch.backends.mps.is_built())
+  device = torch.device('mps') 
+  print("==>> device: ", device)
+  mps_device = torch.device("mps")
 
 net.to(mps_device)                                          # recursively convert their 
                                                             # parameters and buffers to 

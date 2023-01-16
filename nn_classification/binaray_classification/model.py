@@ -12,8 +12,17 @@ from data import X_train, X_test, y_train, y_test
 # Make device agnostic code
 if not torch.backends.mps.is_available():
     if not torch.backends.mps.is_built():
-        device = torch.device('cpu')
+        if not torch.cuda.is_available():     
+            device = torch.device('cpu')
+            print("==>> device: ", device)                      
+        else:                                                      
+            device = torch.device('cuda')                       
+            print("==>> device: ", device)
 else:
+    # this ensures that the current MacOS version is at least 12.3+
+    print(torch.backends.mps.is_available())
+    # this ensures that the current current PyTorch installation was built with MPS activated.
+    print(torch.backends.mps.is_built())
     device = torch.device('mps') 
     print("==>> device: ", device)
     

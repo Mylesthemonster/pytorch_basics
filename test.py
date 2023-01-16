@@ -7,10 +7,10 @@ print("==>> torch.__version__: ", torch.__version__)
 if not torch.backends.mps.is_available():
     if not torch.backends.mps.is_built():
         if not torch.cuda.is_available():     
-            device = torch.device('cuda')
+            device = torch.device('cpu')
             print("==>> device: ", device)                      
         else:                                                      
-            device = torch.device('cpu')                       
+            device = torch.device('cuda')                       
             print("==>> device: ", device)
 else:
     # this ensures that the current MacOS version is at least 12.3+
